@@ -8,7 +8,6 @@ const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    navigator.vibrate(150);
     setTheme(theme === "light" ? "dark" : "light");
   };
 
