@@ -19,10 +19,11 @@ const ThemeSwitch = () => {
           alt="Logo"
           width={120}
           height={120}
-          className="hover:scale-110 duration-150"
+          className="hover:scale-110 duration-200"
           unoptimized
         />
       </button>
+      <em>click me</em>
     </>
   );
 };
