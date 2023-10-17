@@ -1,7 +1,8 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import Providers from "./providers";
 import Navigation from "@/components/Navigation";
+import type { Metadata } from "next";
+
+import "./globals.css";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "awinter.dev",
@@ -15,7 +16,7 @@ export type RootLayoutProps = {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
-      <body className="bg-light dark:bg-dark transition-colors duration-200 text-dark dark:text-light">
+      <body className="bg-light text-dark transition-colors duration-200 dark:bg-dark dark:text-light">
         <Providers>
           <Navigation />
           {children}

@@ -1,8 +1,9 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import Logo from "/public/LogoIMG.png";
 import Image from "next/image";
+
+import Logo from "/public/LogoIMG.png";
 
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
@@ -19,7 +20,7 @@ const ThemeSwitch = () => {
           alt="Logo"
           width={120}
           height={120}
-          className="hover:scale-110 duration-200"
+          className="duration-200 hover:scale-110"
           unoptimized
         />
       </button>
