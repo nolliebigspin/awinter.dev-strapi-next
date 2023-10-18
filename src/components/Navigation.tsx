@@ -25,15 +25,21 @@ const Navigation = () => {
     "h-1 w-8 my-1 rounded-full bg-dark dark:bg-light transition transform duration-200";
 
   return (
-    <nav className="sticky top-0 z-40 bg-lightGray bg-opacity-20 p-4 bg-blend-multiply ring-2 ring-lightGray backdrop-blur-sm dark:bg-opacity-10 dark:ring-darkGray">
+    <nav
+      className={`sticky top-0 z-40 bg-gray ${
+        isMobileMenuOpen
+          ? "bg-opacity-40 dark:bg-opacity-20"
+          : "bg-opacity-20 dark:bg-opacity-10"
+      } p-4 bg-blend-multiply backdrop-blur-sm`}
+    >
       <div className="flex items-center justify-between">
-        <Link href="/">
+        <Link href="/" onClick={() => setMobileMenuOpen(false)}>
           <Logo size={40} animation />
         </Link>
         <div className="hidden md:flex">
           <ul className="flex space-x-6 text-xl">
             {navigationItems.map((item) => (
-              <li key={item.label}>
+              <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
                 <Link
                   href={item.href}
                   className="text-white font-bold hover:underline"
@@ -71,11 +77,19 @@ const Navigation = () => {
           </button>
         </div>
       </div>
-      {isMobileMenuOpen && (
-        <div className="lg:hidden">
+      <div
+        role="region"
+        aria-labelledby={`navigation-mobile-toggle`}
+        className={`grid overflow-hidden text-sm transition-all duration-200 lg:hidden ${
+          isMobileMenuOpen
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
           <ul className="text-white space-y-2 p-4 text-xl">
             {navigationItems.map((item) => (
-              <li key={item.label}>
+              <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
                 <Link
                   href={item.href}
                   className="text-white font-bold hover:underline"
@@ -86,7 +100,7 @@ const Navigation = () => {
             ))}
           </ul>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
