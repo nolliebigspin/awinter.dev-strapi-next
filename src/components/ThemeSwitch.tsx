@@ -1,9 +1,8 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import Image from "next/image";
 
-import Logo from "/public/LogoIMG.png";
+import Logo from "./Logo";
 
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
@@ -15,14 +14,7 @@ const ThemeSwitch = () => {
   return (
     <>
       <button onClick={toggleTheme}>
-        <Image
-          src={Logo}
-          alt="Logo"
-          width={120}
-          height={120}
-          className="duration-200 hover:scale-110"
-          unoptimized
-        />
+        <Logo size={120} animation />
       </button>
       <em>click me</em>
     </>
