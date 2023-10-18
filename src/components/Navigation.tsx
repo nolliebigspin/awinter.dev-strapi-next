@@ -1,18 +1,14 @@
 "use client";
 
+import { LinkItem } from "@/types";
 import Link from "next/link";
 import React, { useState } from "react";
 
 import Logo from "./Logo";
 
-export type NavigationItem = {
-  label: string;
-  href: string;
-};
-
 const Navigation = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navigationItems: NavigationItem[] = [
+  const navigationItems: LinkItem[] = [
     { label: "about", href: "/about" },
     { label: "blog", href: "/blog" },
   ];
@@ -40,10 +36,7 @@ const Navigation = () => {
           <ul className="flex space-x-6 text-xl">
             {navigationItems.map((item) => (
               <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
-                <Link
-                  href={item.href}
-                  className="text-white font-bold hover:underline"
-                >
+                <Link href={item.href} className="font-bold hover:underline">
                   {item.label}
                 </Link>
               </li>
@@ -87,13 +80,10 @@ const Navigation = () => {
         }`}
       >
         <div className="overflow-hidden">
-          <ul className="text-white space-y-2 p-4 text-xl">
+          <ul className="space-y-2 p-4 text-xl">
             {navigationItems.map((item) => (
               <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
-                <Link
-                  href={item.href}
-                  className="text-white font-bold hover:underline"
-                >
+                <Link href={item.href} className="font-bold hover:underline">
                   {item.label}
                 </Link>
               </li>

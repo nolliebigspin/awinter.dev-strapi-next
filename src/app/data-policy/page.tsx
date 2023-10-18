@@ -1,20 +1,10 @@
 import Header from "@/components/Header";
-import { EMOJI_BLOG, lorem, loremLong } from "@/constants";
+import { EMOJI_PRIVACY_POLICY, lorem, loremLong } from "@/constants";
 
-const Blog = () => {
+const DataPolicy = () => {
   return (
     <>
-      <Header title={`blog ${EMOJI_BLOG}`} />
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{lorem}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
+      <Header title={`data policy ${EMOJI_PRIVACY_POLICY}`} />
       <p>
         {loremLong}
         {loremLong}
@@ -26,8 +16,15 @@ const Blog = () => {
         {lorem}
         {loremLong}
       </p>
+      <p>
+        {loremLong}
+        {loremLong}
+      </p>
       <p>{loremLong}</p>
-      <p>{lorem}</p>
+      <p>
+        {lorem}
+        {lorem}
+      </p>
       <p>{loremLong}</p>
       <p>{lorem}</p>
       <p>{lorem}</p>
@@ -35,6 +32,11 @@ const Blog = () => {
         {loremLong}
         {loremLong}
       </p>
+      <p>{loremLong}</p>
+      <p>{lorem}</p>
+      <p>{loremLong}</p>
+      <p>{lorem}</p>
+      <p>{lorem}</p>
       <p>{loremLong}</p>
       <p>
         {loremLong}
@@ -52,4 +54,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default DataPolicy;

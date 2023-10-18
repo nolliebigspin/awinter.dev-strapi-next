@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import type { Metadata } from "next";
 
@@ -19,7 +20,10 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body className="bg-light text-dark transition-colors duration-200 dark:bg-dark dark:text-light">
         <Providers>
           <Navigation />
-          {children}
+          <main className="md:max-w-3/4 flex min-h-screen w-full flex-col items-center space-y-4 p-6 text-justify md:mx-auto md:w-3/4">
+            {children}
+          </main>
+          <Footer />
         </Providers>
       </body>
     </html>

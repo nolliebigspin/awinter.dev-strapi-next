@@ -1,4 +1,8 @@
 export const EMOJI_CONSTRUCTION = "🚧";
+export const EMOJI_MYSELF = "🙆‍♂️";
+export const EMOJI_PRIVACY_POLICY = "🚨";
+export const EMOJI_IMPRINT = "🏢";
+export const EMOJI_BLOG = "✍️";
 
 export const loremShort =
   "Lorem ipsum dolor sit amet, consetetur sadipscing elitra.";

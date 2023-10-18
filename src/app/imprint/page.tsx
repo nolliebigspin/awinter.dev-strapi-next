@@ -1,12 +1,14 @@
 import Header from "@/components/Header";
-import { EMOJI_BLOG, lorem, loremLong } from "@/constants";
+import { EMOJI_IMPRINT, lorem, loremLong } from "@/constants";
 
-const Blog = () => {
+const Imprint = () => {
   return (
     <>
-      <Header title={`blog ${EMOJI_BLOG}`} />
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
+      <Header title={`imprint ${EMOJI_IMPRINT}`} />
+      <p>
+        {lorem}
+        {lorem}
+      </p>
       <p>{loremLong}</p>
       <p>{lorem}</p>
       <p>{lorem}</p>
@@ -14,6 +16,11 @@ const Blog = () => {
         {loremLong}
         {loremLong}
       </p>
+      <p>{loremLong}</p>
+      <p>{lorem}</p>
+      <p>{loremLong}</p>
+      <p>{lorem}</p>
+      <p>{lorem}</p>
       <p>{loremLong}</p>
       <p>
         {loremLong}
@@ -26,11 +33,6 @@ const Blog = () => {
         {lorem}
         {loremLong}
       </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{lorem}</p>
       <p>
         {loremLong}
         {loremLong}
@@ -52,4 +54,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Imprint;
