@@ -22,7 +22,7 @@ const Navigation = () => {
   };
 
   const hamburgerBar =
-    "h-1 w-8 my-1 rounded-full bg-dark dark:bg-light transition transform duration-200";
+    "h-1 w-8 my-1 rounded-full bg-dark dark:bg-light transform duration-200";
 
   return (
     <nav
@@ -30,7 +30,7 @@ const Navigation = () => {
         isMobileMenuOpen
           ? "bg-opacity-40 dark:bg-opacity-20"
           : "bg-opacity-20 dark:bg-opacity-10"
-      } p-4 bg-blend-multiply backdrop-blur-sm`}
+      } p-4 bg-blend-multiply backdrop-blur-sm transition-all duration-200`}
     >
       <div className="flex items-center justify-between">
         <Link href="/" onClick={() => setMobileMenuOpen(false)}>
@@ -80,7 +80,7 @@ const Navigation = () => {
       <div
         role="region"
         aria-labelledby={`navigation-mobile-toggle`}
-        className={`grid overflow-hidden text-sm transition-all duration-200 lg:hidden ${
+        className={`grid overflow-hidden text-sm duration-200 lg:hidden ${
           isMobileMenuOpen
             ? "grid-rows-[1fr] opacity-100"
             : "grid-rows-[0fr] opacity-0"
