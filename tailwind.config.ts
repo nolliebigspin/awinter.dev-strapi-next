@@ -7,6 +7,9 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: "class",
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     colors: {
       primary: "#FF8E3D",
