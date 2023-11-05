@@ -1,55 +1,15 @@
 import Header from "@/components/Header";
-import { EMOJI_MYSELF, lorem, loremLong } from "@/constants";
+import { MarkdownDisplay } from "@/components/Markdown";
+import { ABOUT_PAGE_ID, EMOJI_MYSELF, lorem, loremLong } from "@/constants";
+import { genericFetch } from "@/lib/genericFetch";
+import { PageData } from "@/lib/pageTypes";
 
-const About = () => {
+const About = async () => {
+  const data = await genericFetch<PageData>(ABOUT_PAGE_ID);
   return (
     <>
-      <Header title={`about ${EMOJI_MYSELF}`} />
-      <p>{lorem}</p>
-      <p>{lorem}</p>
-      <p>
-        {lorem}
-        {lorem}
-      </p>
-      <p>{loremLong}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>
-        {lorem}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{lorem}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>
-        {lorem}
-        {loremLong}
-      </p>
-      <h3 className="text-xl font-bold">end.</h3>
+      <Header title={data.fields.page_title} />
+      <MarkdownDisplay arr={data.fields.page_content} />
     </>
   );
 };

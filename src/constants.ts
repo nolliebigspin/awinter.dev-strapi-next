@@ -4,6 +4,8 @@ export const EMOJI_PRIVACY_POLICY = "🚨";
 export const EMOJI_IMPRINT = "🏢";
 export const EMOJI_BLOG = "✍️";
 
+export const ABOUT_PAGE_ID = "6rPavRBxlcDgUV4xPJ6KjL";
+
 export const loremShort =
   "Lorem ipsum dolor sit amet, consetetur sadipscing elitra.";
 export const lorem =
