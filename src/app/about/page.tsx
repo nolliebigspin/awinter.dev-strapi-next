@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import { MarkdownDisplay } from "@/components/Markdown";
-import { ABOUT_PAGE_ID, EMOJI_MYSELF, lorem, loremLong } from "@/constants";
+import { ABOUT_PAGE_ID } from "@/constants";
 import { genericFetch } from "@/lib/genericFetch";
 import { PageData } from "@/lib/pageTypes";
 

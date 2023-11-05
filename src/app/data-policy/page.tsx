@@ -1,55 +1,15 @@
 import Header from "@/components/Header";
-import { EMOJI_PRIVACY_POLICY, lorem, loremLong } from "@/constants";
+import { MarkdownDisplay } from "@/components/Markdown";
+import { DATAPOLICY_PAGE_ID } from "@/constants";
+import { genericFetch } from "@/lib/genericFetch";
+import { PageData } from "@/lib/pageTypes";
 
-const DataPolicy = () => {
+const DataPolicy = async () => {
+  const data = await genericFetch<PageData>(DATAPOLICY_PAGE_ID);
   return (
     <>
-      <Header title={`data policy ${EMOJI_PRIVACY_POLICY}`} />
-      <p>
-        {loremLong}
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>
-        {lorem}
-        {loremLong}
-      </p>
-      <p>
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>
-        {lorem}
-        {lorem}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{lorem}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{lorem}</p>
-      <p>{loremLong}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>
-        {lorem}
-        {loremLong}
-      </p>
-      <h3 className="text-xl font-bold">end.</h3>
+      <Header title={data.fields.page_title} />
+      <MarkdownDisplay arr={data.fields.page_content} />
     </>
   );
 };

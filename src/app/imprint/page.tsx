@@ -1,55 +1,15 @@
 import Header from "@/components/Header";
-import { EMOJI_IMPRINT, lorem, loremLong } from "@/constants";
+import { MarkdownDisplay } from "@/components/Markdown";
+import { IMPRINT_PAGE_ID } from "@/constants";
+import { genericFetch } from "@/lib/genericFetch";
+import { PageData } from "@/lib/pageTypes";
 
-const Imprint = () => {
+const Imprint = async () => {
+  const data = await genericFetch<PageData>(IMPRINT_PAGE_ID);
   return (
     <>
-      <Header title={`imprint ${EMOJI_IMPRINT}`} />
-      <p>
-        {lorem}
-        {lorem}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{lorem}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>{lorem}</p>
-      <p>{loremLong}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>
-        {lorem}
-        {loremLong}
-      </p>
-      <p>
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>
-        {loremLong}
-        {loremLong}
-        {loremLong}
-      </p>
-      <p>{loremLong}</p>
-      <p>{lorem}</p>
-      <p>
-        {lorem}
-        {loremLong}
-      </p>
-      <h3 className="text-xl font-bold">end.</h3>
+      <Header title={data.fields.page_title} />
+      <MarkdownDisplay arr={data.fields.page_content} />
     </>
   );
 };
