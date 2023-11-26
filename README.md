@@ -1,7 +1,7 @@
 ## awinter.dev
 
 #### frontend
-*Nextt.js*
+*Next.js*
 
 #### backend
 *strapi*
