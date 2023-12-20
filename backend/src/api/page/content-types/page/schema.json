@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "headline": {
+      "type": "string",
+      "required": false
+    },
+    "blocks": {
+      "type": "blocks"
+    },
+    "markdown": {
+      "type": "richtext"
+    }
+  }
+}

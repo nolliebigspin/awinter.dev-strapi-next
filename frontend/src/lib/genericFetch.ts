@@ -1,18 +1,22 @@
-export async function genericFetch<T>(entryId: string): Promise<T> {
-  const url = `${process.env.CMS_URL}/spaces/${process.env.CONTENTFUL_SPACE_ID}/entries/${entryId}`;
+export type GenericFetchParams = {
+  contentType: string;
+  id: string | number;
+};
 
-  try {
-    const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${process.env.CONTENTFUL_AUTH_TOKEN}` },
-    });
+export const getData = async ({ contentType, id }: GenericFetchParams) => {
+  const url = `${process.env.STRAPI_URL}/api/${contentType}/${id}`;
+  console.log("🚀 ~ file: genericFetch.ts:12 ~ url:", url);
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${process.env.STRAPI_ACCESS_TOKEN}`,
+    },
+  });
 
-    const data = (await res.json()) as T;
-    return data;
-  } catch (error) {
-    throw new Error(`Failed to fetch data from ${url}! Error: ${error}`);
+  if (!res.ok) {
+    console.log(`Failed to fetch data from ${url}!`);
   }
-}
+
+  const data = res.json();
+  return data;
+};

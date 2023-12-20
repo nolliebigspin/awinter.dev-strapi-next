@@ -1,7 +1,10 @@
 import ThemeSwitch from "@/components/ThemeSwitch";
 import { EMOJI_CONSTRUCTION } from "@/constants";
+import { getData } from "@/lib/genericFetch";
 
-const Home = () => {
+const Home = async () => {
+  const data = await getData({ contentType: "pages", id: 1 });
+  console.log(data);
   return (
     <main className="flex min-h-screen flex-col items-center p-12">
       <h1 className="mb-8 text-4xl font-bold">home</h1>

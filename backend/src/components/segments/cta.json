@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_segments_ctas",
+  "info": {
+    "displayName": "CTA",
+    "icon": "lightbulb",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "headline": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "claim": {
+      "type": "string"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "atoms.button"
+    }
+  }
+}

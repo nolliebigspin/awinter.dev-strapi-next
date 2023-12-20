@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_atoms_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "BLANK",
+        "SELF"
+      ],
+      "required": true,
+      "default": "SELF"
+    }
+  }
+}
