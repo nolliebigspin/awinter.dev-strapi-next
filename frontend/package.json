@@ -1,7 +1,10 @@
 {
-  "name": "awinter.dev",
-  "version": "0.1.0",
+  "name": "frontend",
   "private": true,
+  "version": "0.1.0",
+  "volta": {
+    "node": "18.18.2"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

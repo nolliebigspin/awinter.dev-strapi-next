@@ -1,5 +1,9 @@
 {
   "name": "awinter.dev",
+  "private": true,
   "version": "1.0.0",
+  "volta": {
+    "node": "18.18.2"
+  },
   "workspaces": ["frontend", "backend"]
 }

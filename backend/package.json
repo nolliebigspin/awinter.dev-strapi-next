@@ -2,7 +2,9 @@
   "name": "backend",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "volta": {
+    "node": "18.18.2"
+  },
   "scripts": {
     "dev": "strapi develop",
     "start": "strapi start",
