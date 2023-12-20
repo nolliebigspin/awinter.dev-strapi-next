@@ -16,6 +16,5 @@ export const getData = async <T>({ contentType, id }: GenericFetchParams) => {
     console.error(`Failed to fetch data from ${url}!`);
   }
 
-  const data = res.json() as T;
-  return data;
+  return res.json() as T;
 };
