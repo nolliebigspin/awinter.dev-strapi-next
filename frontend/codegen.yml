@@ -1,0 +1,15 @@
+overwrite: true
+schema: "http://127.0.0.1:1337/graphql"
+documents: "src/lib/graphql/**/*.graphql"
+generates:
+  src/lib/genTypes.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      useIndexSignature: true
+      maybeValue: "T"
+    hooks:
+      afterOneFileWrite:
+        - prettier ./src/lib/genTypes.ts --write

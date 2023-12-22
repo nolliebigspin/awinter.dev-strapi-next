@@ -5,5 +5,8 @@
   "volta": {
     "node": "18.18.2"
   },
-  "workspaces": ["frontend", "backend"]
+  "workspaces": ["frontend", "backend"],
+  "resolutions": {
+    "graphql": "^15.5.1"
+  }
 }

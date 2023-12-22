@@ -1,0 +1,9 @@
+query pageBySlug($slug: String!) {
+  pages(filters: { slug: { eq: $slug } }) {
+    data {
+      attributes {
+        slug
+      }
+    }
+  }
+}

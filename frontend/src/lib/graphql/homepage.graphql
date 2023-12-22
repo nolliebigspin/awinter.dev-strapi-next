@@ -1,0 +1,10 @@
+query homePage {
+  page(id: 1) {
+    data {
+      attributes {
+        slug
+        headline
+      }
+    }
+  }
+}

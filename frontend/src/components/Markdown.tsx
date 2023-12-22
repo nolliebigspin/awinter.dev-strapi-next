@@ -1,4 +1,3 @@
-import { PageContent } from "@/lib/pageTypes";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -43,18 +42,6 @@ const Markdown = ({ children, className }: MarkdownProps): JSX.Element => {
       {children}
     </ReactMarkdown>
   );
-};
-
-export const MarkdownDisplay = ({
-  arr,
-  className,
-}: {
-  arr: PageContent;
-  className?: string;
-}) => {
-  const content = arr.content.map((item) => item.content[0].value).join("\n\n");
-
-  return <Markdown className={className}>{content}</Markdown>;
 };
 
 export default Markdown;
