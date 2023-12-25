@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import { MarkdownDisplay } from "@/components/Markdown";
 
 const About = async () => {
   return (
