@@ -23,20 +23,23 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: create env file
+        run: |
+          touch ./backend/.env
+          echo DATABASE_CLIENT=${{ secrets.DATABASE_CLIENT }} >> ./backend/.env
+          echo DATABASE_PORT=${{ secrets.DATABASE_PORT }} >> ./backend/.env
+          echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> ./backend/.env
+          echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> ./backend/.env
+          echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> ./backend/.env
+          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> ./backend/.env
+          echo APP_KEYS=${{ secrets.APP_KEYS }} >> ./backend/.env
+          echo NODE_ENV=${{ secrets.NODE_ENV }} >> ./backend/.env
+          echo ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} >> ./backend/.env
+
       - name: Build and push Docker Compose Image
         run: |
           docker compose --file ./backend/docker-compose.yml build
           docker compose --file ./backend/docker-compose.yml push
-        env:
-          DATABASE_CLIENT: ${{ secrets.DATABASE_CLIENT }}
-          DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
-          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          APP_KEYS: ${{ secrets.APP_KEYS }}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
-          ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
       
       - name: Deploy to Delta-Server
         run: ssh ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }} -p ${{ secrets.DELTA_SSH_PORT }} 'bash -s' < ${{ secrets.DELTA_DEPLOY_PATH }}
