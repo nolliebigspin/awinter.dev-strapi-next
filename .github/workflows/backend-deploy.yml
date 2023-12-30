@@ -46,8 +46,8 @@ jobs:
         with:
           host: ${{ secrets.DELTA_SSH_HOST }}
           username: ${{ secrets.DELTA_SSH_USER }}
-          key: ${{ secrets.DELTA_SSH_PRIVATE_KEY }}
           port: ${{ secrets.DELTA_SSH_PORT }}
+          key: ${{ secrets.DELTA_SSH_PRIVATE_KEY }}
           source: ./backend/scripts/deploy.sh
           target: ${{ secrets.DELTA_DEPLOY_PATH }}
         
