@@ -42,16 +42,15 @@ jobs:
       #     docker compose --file ./backend/docker-compose.yml push
 
       - name: Copy deployment script
-        # run: scp -p ${{ secrets.DELTA_SSH_PORT }} ./backend/scripts/deploy.sh ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }}:${{ secrets.DELTA_DEPLOY_PATH }}/deploy.sh
-        uses: appleboy/scp-action@master
+        uses: appleboy/scp-action@v0.1.6
         with:
           host: ${{ secrets.DELTA_SSH_HOST }}
           username: ${{ secrets.DELTA_SSH_USER }}
-          key: ${{ secrets.DELTA_SSH_PRIVATE_KEY }}
+          key: ${{ secrets.KEY }}
           port: ${{ secrets.DELTA_SSH_PORT }}
-          source: ""./backend/scripts/deploy.sh"
+          source: ./backend/scripts/deploy.sh
           target: ${{ secrets.DELTA_DEPLOY_PATH }}
-      
+        
       - name: Run deployment script
         run: ssh -p ${{ secrets.DELTA_SSH_PORT }} ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }} "cd ${{ secrets.DELTA_DEPLOY_PATH }} && sh deploy.sh"
         env:
