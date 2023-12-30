@@ -1,7 +1,6 @@
 version: "3"
 services:
-  strapi:
-    container_name: awinter-dev-strapi
+  awinter-dev-strapi:
     build:
       context: ..
       dockerfile: ./backend/Dockerfile
@@ -34,7 +33,6 @@ services:
       - awinter-dev-db
 
   awinter-dev-db:
-    container_name: awinter-dev-db
     platform: linux/amd64 #for platform error on Apple M1 chips
     restart: unless-stopped
     env_file: .env
