@@ -36,13 +36,23 @@ jobs:
           echo NODE_ENV=${{ secrets.NODE_ENV }} >> ./backend/.env
           echo ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} >> ./backend/.env
 
-      - name: Build and push Docker Compose Image
-        run: |
-          docker compose --file ./backend/docker-compose.yml build
-          docker compose --file ./backend/docker-compose.yml push
+      # - name: Build and push Docker Compose Image
+      #   run: |
+      #     docker compose --file ./backend/docker-compose.yml build
+      #     docker compose --file ./backend/docker-compose.yml push
+
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@v0.1.6
+        with:
+          host: ${{ secrets.DELTA_SSH_HOST }}
+          username: ${{ secrets.DELTA_SSH_USER }}
+          port: ${{ secrets.DELTA_SSH_PORT }}
+          key: ${{ secrets.KEY }}
+          source: "./backend/scripts/deploy.sh"
+          target: ${{ secrets.DELTA_DEPLOY_PATH }}/deploy.sh
       
       - name: Deploy to Delta-Server
-        run: ssh ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }} -p ${{ secrets.DELTA_SSH_PORT }} 'bash -s' < ${{ secrets.DELTA_DEPLOY_PATH }}
+        run: ssh ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }} -p ${{ secrets.DELTA_SSH_PORT }} "cd ${{ secrets.DELTA_DEPLOY_PATH }} && sh deploy.sh"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DELTA_SSH_PRIVATE_KEY }}g
 
