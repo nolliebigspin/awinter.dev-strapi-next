@@ -1,1 +1,1 @@
-Test script deploy!
+echo "Hello deploy script"
