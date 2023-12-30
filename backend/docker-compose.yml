@@ -4,7 +4,7 @@ services:
     build:
       context: ..
       dockerfile: ./backend/Dockerfile
-    image: strapi:latest
+    image: ghcr.io/nolliebigspin/awinter-dev-strapi:latest
     restart: unless-stopped
     env_file: .env
     environment:

@@ -27,6 +27,8 @@ jobs:
         run: |
           docker compose --file ./backend/docker-compose.yml build
           docker compose --file ./backend/docker-compose.yml push
+        env:
+          DATABASE_CLIENT: ${{ secrets.DATABASE_CLIENT }}
       
       - name: Deploy to Delta-Server
         run: ssh ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }} -p ${{ secrets.DELTA_SSH_PORT }} 'bash -s' < ${{ secrets.DELTA_DEPLOY_PATH }}
