@@ -5,27 +5,31 @@ on:
     branches:
       - main
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.actor }}/strapi-awinter-dev:latest
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v3
 
       - name: Login to GHCR
         run: echo ${{ secrets.GHCR_ACCESS_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Build and Push Docker Compose Image
+      - name: Build and push Docker Compose Image
         run: |
           docker compose --file ./backend/docker-compose.yml build
           docker compose --file ./backend/docker-compose.yml push
       
-      - name: Deploy to Ubuntu Server
-        run: ssh alec@nolliebigspin.com -p 22296 'bash -s' < ~/projects/awinter-dev/deploy.sh
+      - name: Deploy to Delta-Server
+        run: ssh ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }} -p ${{ secrets.DELTA_SSH_PORT }} 'bash -s' < ${{ secrets.DELTA_DEPLOY_PATH }}
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DELTA_SSH_PRIVATE_KEY }}g
 
