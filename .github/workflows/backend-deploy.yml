@@ -23,7 +23,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create env file
+      - name: Create strapi env
         run: |
           touch ./backend/.env
           echo DATABASE_CLIENT=${{ secrets.DATABASE_CLIENT }} >> ./backend/.env
@@ -48,7 +48,7 @@ jobs:
           username: ${{ secrets.DELTA_SSH_USER }}
           port: ${{ secrets.DELTA_SSH_PORT }}
           key: ${{ secrets.DELTA_SSH_PRIVATE_KEY }}
-          source: ./backend/scripts/deploy.sh
+          source: ./backend/scripts/
           target: ${{ secrets.DELTA_DEPLOY_PATH }}
         
       - name: Run deployment script

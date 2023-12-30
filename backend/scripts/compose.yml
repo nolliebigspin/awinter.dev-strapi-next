@@ -1,0 +1,37 @@
+version: "3"
+services:
+  awinter-dev-strapi:
+    image: ghcr.io/nolliebigspin/awinter-dev-strapi:latest
+    restart: unless-stopped
+    volumes:
+      - ./public/uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - strapi
+    depends_on:
+      - awinter-dev-db
+
+  awinter-dev-db:
+    restart: unless-stopped
+    env_file: .env
+    image: postgres:16.1-alpine
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/
+
+    ports:
+      - "5432:5432"
+    networks:
+      - strapi
+
+volumes:
+  strapi-data:
+
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge

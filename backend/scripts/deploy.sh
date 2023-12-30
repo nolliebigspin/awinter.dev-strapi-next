@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Pull the latest image
-# docker compose --file ./docker-compose.yml pull
+ENV_FILE="./.env"
 
-# Recreate and start the containers
-# docker compose --file ./docker-compose.yml up -d
-echo "Hello deploy script!"
+echo "Pulling latest images"
+docker compose --file ./compose.yml pull
+
+echo "Restarting with latest images"
+docker compose --file ./compose.yml --env-file $ENV_FILE up -d
