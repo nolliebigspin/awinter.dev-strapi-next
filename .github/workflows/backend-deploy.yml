@@ -36,13 +36,13 @@ jobs:
           echo NODE_ENV=${{ secrets.NODE_ENV }} >> ./backend/.env
           echo ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} >> ./backend/.env
 
-      - name: Build and push Docker Compose Image
-        run: |
-          docker compose --file ./backend/docker-compose.yml build
+      # - name: Build and push Docker Compose Image
+      #   run: |
+      #     docker compose --file ./backend/docker-compose.yml build
       #     docker compose --file ./backend/docker-compose.yml push
 
       - name: Copy deployment script
-        uses: appleboy/scp-action@v0.1.6
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.DELTA_SSH_HOST }}
           username: ${{ secrets.DELTA_SSH_USER }}
