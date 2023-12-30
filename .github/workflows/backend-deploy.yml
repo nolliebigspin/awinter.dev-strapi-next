@@ -49,7 +49,7 @@ jobs:
           port: ${{ secrets.DELTA_SSH_PORT }}
           key: ${{ secrets.DELTA_SSH_PRIVATE_KEY }}
           source: ./backend/scripts/deploy.sh
-          target: ${{ secrets.DELTA_DEPLOY_PATH }}/deploy.sh
+          target: ${{ secrets.DELTA_DEPLOY_PATH }}
         
       - name: Run deployment script
         uses: appleboy/ssh-action@v1.0.1
@@ -58,5 +58,5 @@ jobs:
           username: ${{ secrets.DELTA_SSH_USER }}
           port: ${{ secrets.DELTA_SSH_PORT }}
           key: ${{ secrets.DELTA_SSH_PRIVATE_KEY }}
-          script: ${{ secrets.DELTA_DEPLOY_PATH }}/deploy.sh
+          script: sh ${{ secrets.DELTA_DEPLOY_PATH }}/backend/scripts/deploy.sh
 
