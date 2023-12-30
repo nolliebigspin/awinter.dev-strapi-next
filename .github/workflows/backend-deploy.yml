@@ -42,7 +42,7 @@ jobs:
       #     docker compose --file ./backend/docker-compose.yml push
 
       - name: Copy deployment script
-        uses: appleboy/scp-action@v0.1.4
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.DELTA_SSH_HOST }}
           username: ${{ secrets.DELTA_SSH_USER }}
