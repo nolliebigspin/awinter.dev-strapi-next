@@ -47,9 +47,9 @@ jobs:
           echo ${{ secrets.DELTA_SSH_PRIVATE_KEY }} > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-      - name: Copy and Execute deploy.sh
+      - name: Copy and execute deploy.sh
         run: |
-          scp -p ${{ secrets.DELTA_SSH_PORT }} ./backend/scripts/deploy.sh ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }}:${{ secrets.DELTA_DEPLOY_PATH }}/deploy.sh
+          scp -P ${{ secrets.DELTA_SSH_PORT }} ./backend/scripts/deploy.sh ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }}:${{ secrets.DELTA_DEPLOY_PATH }}/deploy.sh
           ssh -p ${{ secrets.DELTA_SSH_PORT }} ${{ secrets.DELTA_SSH_USER }}@${{ secrets.DELTA_SSH_HOST }} "sh ${{ secrets.DELTA_DEPLOY_PATH }}/deploy.sh"
 
       # - name: Copy deployment script
