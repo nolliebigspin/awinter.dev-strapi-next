@@ -13,10 +13,6 @@ const Navigation = () => {
     { label: "blog", href: "/blog" },
   ];
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   const hamburgerBar =
     "h-1 w-8 my-1 rounded-full bg-dark dark:bg-light transform duration-200";
 
