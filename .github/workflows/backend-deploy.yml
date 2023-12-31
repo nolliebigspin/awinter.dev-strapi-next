@@ -26,6 +26,7 @@ jobs:
       - name: Create strapi env
         run: |
           touch ./backend/.env
+          echo HOST=127.0.0.1 >> ./backend/.env
           echo DATABASE_CLIENT=${{ secrets.DATABASE_CLIENT }} >> ./backend/.env
           echo DATABASE_PORT=${{ secrets.DATABASE_PORT }} >> ./backend/.env
           echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> ./backend/.env
