@@ -1,12 +1,13 @@
 version: "3"
 services:
   awinter-dev-strapi:
+    env_file: .env
     image: ghcr.io/nolliebigspin/awinter-dev-strapi:latest
     restart: unless-stopped
     volumes:
       - ./public/uploads:/opt/app/public/uploads
     ports:
-      - "1337:1337"
+      - "127.0.0.1:1337:1337"
     networks:
       - strapi
     depends_on:
@@ -24,7 +25,7 @@ services:
       - strapi-data:/var/lib/postgresql/data/
 
     ports:
-      - "5432:5432"
+      - ":5432"
     networks:
       - strapi
 
