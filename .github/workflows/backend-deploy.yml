@@ -26,21 +26,11 @@ jobs:
       - name: Create strapi env
         run: |
           touch ./backend/.env
-          echo HOST=127.0.0.1 >> ./backend/.env
-          echo DATABASE_CLIENT=${{ secrets.DATABASE_CLIENT }} >> ./backend/.env
-          echo DATABASE_PORT=${{ secrets.DATABASE_PORT }} >> ./backend/.env
-          echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> ./backend/.env
-          echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> ./backend/.env
-          echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> ./backend/.env
-          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> ./backend/.env
-          echo APP_KEYS=${{ secrets.APP_KEYS }} >> ./backend/.env
-          echo NODE_ENV=${{ secrets.NODE_ENV }} >> ./backend/.env
-          echo ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} >> ./backend/.env
 
-      # - name: Build and push Docker Compose Image
-      #   run: |
-      #     docker compose --file ./backend/docker-compose.yml build
-      #     docker compose --file ./backend/docker-compose.yml push
+      - name: Build and push Docker Compose Image
+        run: |
+          docker compose --file ./backend/docker-compose.yml build
+          docker compose --file ./backend/docker-compose.yml push
 
       - name: Copy deployment script
         uses: appleboy/scp-action@v0.1.6

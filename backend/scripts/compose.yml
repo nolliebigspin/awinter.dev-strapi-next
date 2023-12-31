@@ -19,8 +19,6 @@ services:
       - ./public/uploads:/opt/app/public/uploads
     ports:
       - "127.0.0.1:1337:1337"
-    networks:
-      - strapi
     depends_on:
       - awinter-dev-db
 
@@ -35,15 +33,5 @@ services:
     volumes:
       - strapi-data:/var/lib/postgresql/data/
 
-    ports:
-      - ":5432"
-    networks:
-      - strapi
-
 volumes:
   strapi-data:
-
-networks:
-  strapi:
-    name: Strapi
-    driver: bridge
