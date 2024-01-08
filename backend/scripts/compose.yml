@@ -16,7 +16,7 @@ services:
     image: ghcr.io/nolliebigspin/awinter-dev-strapi:latest
     restart: unless-stopped
     volumes:
-      - ./public/uploads:/opt/app/public/uploads
+      - ./public/uploads:/app/public/uploads
     ports:
       - "127.0.0.1:1337:1337"
     depends_on:

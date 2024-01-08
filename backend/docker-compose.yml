@@ -4,7 +4,7 @@ services:
     build:
       context: ..
       dockerfile: ./backend/Dockerfile
-    # image: ghcr.io/nolliebigspin/awinter-dev-strapi:latest
+    image: ghcr.io/nolliebigspin/awinter-dev-strapi:latest
     restart: unless-stopped
     env_file: .env
     environment:
@@ -20,6 +20,8 @@ services:
       NODE_ENV: ${NODE_ENV}
     volumes:
       - ./public/uploads:/app/public/uploads
+    ports:
+      - "127.0.0.1:1337:1337"
     depends_on:
       - awinter-dev-db
 
