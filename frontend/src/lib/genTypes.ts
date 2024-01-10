@@ -1127,19 +1127,6 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type HomePageQueryVariables = Exact<{ [key: string]: never }>;
-
-export type HomePageQuery = {
-  __typename?: "Query";
-  page?: {
-    __typename?: "PageEntityResponse";
-    data?: {
-      __typename?: "PageEntity";
-      attributes?: { __typename?: "Page"; slug: string; headline?: string };
-    };
-  };
-};
-
 export type PageBySlugQueryVariables = Exact<{
   slug: Scalars["String"]["input"];
 }>;
@@ -1150,89 +1137,24 @@ export type PageBySlugQuery = {
     __typename?: "PageEntityResponseCollection";
     data: Array<{
       __typename?: "PageEntity";
-      attributes?: { __typename?: "Page"; slug: string };
+      attributes?: {
+        __typename?: "Page";
+        slug: string;
+        headline?: string;
+        blocks?: any;
+      };
     }>;
   };
 };
 
-export const HomePageDocument = gql`
-  query homePage {
-    page(id: 1) {
-      data {
-        attributes {
-          slug
-          headline
-        }
-      }
-    }
-  }
-`;
-
-/**
- * __useHomePageQuery__
- *
- * To run a query within a React component, call `useHomePageQuery` and pass it any options that fit your needs.
- * When your component renders, `useHomePageQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useHomePageQuery({
- *   variables: {
- *   },
- * });
- */
-export function useHomePageQuery(
-  baseOptions?: Apollo.QueryHookOptions<HomePageQuery, HomePageQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<HomePageQuery, HomePageQueryVariables>(
-    HomePageDocument,
-    options
-  );
-}
-export function useHomePageLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    HomePageQuery,
-    HomePageQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<HomePageQuery, HomePageQueryVariables>(
-    HomePageDocument,
-    options
-  );
-}
-export function useHomePageSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    HomePageQuery,
-    HomePageQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<HomePageQuery, HomePageQueryVariables>(
-    HomePageDocument,
-    options
-  );
-}
-export type HomePageQueryHookResult = ReturnType<typeof useHomePageQuery>;
-export type HomePageLazyQueryHookResult = ReturnType<
-  typeof useHomePageLazyQuery
->;
-export type HomePageSuspenseQueryHookResult = ReturnType<
-  typeof useHomePageSuspenseQuery
->;
-export type HomePageQueryResult = Apollo.QueryResult<
-  HomePageQuery,
-  HomePageQueryVariables
->;
 export const PageBySlugDocument = gql`
   query pageBySlug($slug: String!) {
     pages(filters: { slug: { eq: $slug } }) {
       data {
         attributes {
           slug
+          headline
+          blocks
         }
       }
     }

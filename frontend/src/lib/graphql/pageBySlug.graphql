@@ -3,6 +3,8 @@ query pageBySlug($slug: String!) {
     data {
       attributes {
         slug
+        headline
+        blocks
       }
     }
   }

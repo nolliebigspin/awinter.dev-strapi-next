@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 import Logo from "./Logo";
+import ThemeSwitch from "./ThemeSwitch";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,16 +31,18 @@ const Navigation = () => {
         </Link>
         <div className="hidden md:flex">
           <ul className="flex space-x-6 text-xl">
-            {navigationItems.map((item) => (
+            {/* {navigationItems.map((item) => (
               <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
                 <Link href={item.href} className="font-bold hover:underline">
                   {item.label}
                 </Link>
               </li>
-            ))}
+            ))} */}
+            <ThemeSwitch />
           </ul>
         </div>
-        <div className="md:hidden">
+        <div className="flex gap-4 md:hidden">
+          <ThemeSwitch />
           <button
             className="group flex h-12 w-12 flex-col items-center justify-center"
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
@@ -76,7 +79,7 @@ const Navigation = () => {
         }`}
       >
         <div className="overflow-hidden">
-          <ul className="space-y-2 p-4 text-xl">
+          {/* <ul className="space-y-2 p-4 text-xl">
             {navigationItems.map((item) => (
               <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
                 <Link href={item.href} className="font-bold hover:underline">
@@ -84,7 +87,7 @@ const Navigation = () => {
                 </Link>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </div>
     </nav>
