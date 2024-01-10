@@ -26,7 +26,7 @@ services:
       - awinter-dev-db
 
   awinter-dev-db:
-    platform: linux/amd64 #for platform error on Apple M1 chips
+    platform: linux/amd64
     restart: unless-stopped
     env_file: .env
     image: postgres:16.1-alpine
@@ -36,6 +36,8 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
       - strapi-data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
 
 volumes:
   strapi-data:
