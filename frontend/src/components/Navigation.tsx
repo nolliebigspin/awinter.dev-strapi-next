@@ -10,8 +10,9 @@ import ThemeSwitch from "./ThemeSwitch";
 const Navigation = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigationItems: LinkItem[] = [
-    { label: "about", href: "/about" },
-    { label: "blog", href: "/blog" },
+    // TODO
+    // { label: "about", href: "/about" },
+    // { label: "blog", href: "/blog" },
   ];
 
   const hamburgerBar =
@@ -29,44 +30,48 @@ const Navigation = () => {
         <Link href="/" onClick={() => setMobileMenuOpen(false)}>
           <Logo size={40} animation />
         </Link>
-        <div className="hidden md:flex">
-          <ul className="flex space-x-6 text-xl">
-            {/* {navigationItems.map((item) => (
-              <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
-                <Link href={item.href} className="font-bold hover:underline">
-                  {item.label}
-                </Link>
-              </li>
-            ))} */}
-            <ThemeSwitch />
-          </ul>
+        <div className="hidden gap-6 md:flex">
+          {navigationItems.length > 0 && (
+            <ul className="flex gap-6 text-xl">
+              {navigationItems.map((item) => (
+                <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
+                  <Link href={item.href} className="font-bold hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+          <ThemeSwitch />
         </div>
         <div className="flex gap-4 md:hidden">
           <ThemeSwitch />
-          <button
-            className="group flex h-12 w-12 flex-col items-center justify-center"
-            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <div
-              className={`${hamburgerBar} ${
-                isMobileMenuOpen
-                  ? "translate-y-3 rotate-45 group-hover:scale-110"
-                  : "group-hover:scale-110"
-              }`}
-            />
-            <div
-              className={`${hamburgerBar} ${
-                isMobileMenuOpen ? "opacity-0" : "group-hover:scale-110"
-              }`}
-            />
-            <div
-              className={`${hamburgerBar} ${
-                isMobileMenuOpen
-                  ? "-translate-y-3 -rotate-45 group-hover:scale-110"
-                  : "group-hover:scale-110"
-              }`}
-            />
-          </button>
+          {navigationItems.length > 0 && (
+            <button
+              className="group flex h-12 w-12 flex-col items-center justify-center"
+              onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <div
+                className={`${hamburgerBar} ${
+                  isMobileMenuOpen
+                    ? "translate-y-3 rotate-45 group-hover:scale-110"
+                    : "group-hover:scale-110"
+                }`}
+              />
+              <div
+                className={`${hamburgerBar} ${
+                  isMobileMenuOpen ? "opacity-0" : "group-hover:scale-110"
+                }`}
+              />
+              <div
+                className={`${hamburgerBar} ${
+                  isMobileMenuOpen
+                    ? "-translate-y-3 -rotate-45 group-hover:scale-110"
+                    : "group-hover:scale-110"
+                }`}
+              />
+            </button>
+          )}
         </div>
       </div>
       <div
@@ -79,15 +84,17 @@ const Navigation = () => {
         }`}
       >
         <div className="overflow-hidden">
-          {/* <ul className="space-y-2 p-4 text-xl">
-            {navigationItems.map((item) => (
-              <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
-                <Link href={item.href} className="font-bold hover:underline">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul> */}
+          {navigationItems.length > 0 && (
+            <ul className="space-y-2 p-4 text-xl">
+              {navigationItems.map((item) => (
+                <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
+                  <Link href={item.href} className="font-bold hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </nav>

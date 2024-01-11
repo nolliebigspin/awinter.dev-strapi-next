@@ -377,7 +377,6 @@ export interface ApiPagePage extends Schema.CollectionType {
     slug: Attribute.UID & Attribute.Required;
     headline: Attribute.String;
     blocks: Attribute.Blocks;
-    markdown: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

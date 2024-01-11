@@ -561,7 +561,6 @@ export type Page = {
   blocks?: Maybe<Scalars["JSON"]["output"]>;
   createdAt?: Maybe<Scalars["DateTime"]["output"]>;
   headline?: Maybe<Scalars["String"]["output"]>;
-  markdown?: Maybe<Scalars["String"]["output"]>;
   publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
   slug: Scalars["String"]["output"];
   updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
@@ -590,7 +589,6 @@ export type PageFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>;
   headline?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  markdown?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<PageFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
@@ -601,7 +599,6 @@ export type PageFiltersInput = {
 export type PageInput = {
   blocks?: InputMaybe<Scalars["JSON"]["input"]>;
   headline?: InputMaybe<Scalars["String"]["input"]>;
-  markdown?: InputMaybe<Scalars["String"]["input"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   slug?: InputMaybe<Scalars["String"]["input"]>;
 };

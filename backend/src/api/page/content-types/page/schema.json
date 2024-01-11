@@ -22,9 +22,6 @@
     },
     "blocks": {
       "type": "blocks"
-    },
-    "markdown": {
-      "type": "richtext"
     }
   }
 }

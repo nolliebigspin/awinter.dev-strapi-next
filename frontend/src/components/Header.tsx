@@ -6,9 +6,9 @@ export type HeaderProps = {
 
 const Header = ({ title, subtitle, className }: HeaderProps) => {
   return (
-    <header className={`${className} mb-4 text-center`}>
+    <header className={`${className} mb-8 mt-4 text-center`}>
       <h1 className="text-4xl font-bold">{title}</h1>
-      {subtitle && <h5 className="text-lg">{subtitle}</h5>}
+      {subtitle && <p className="text-regular">{subtitle}</p>}
     </header>
   );
 };
