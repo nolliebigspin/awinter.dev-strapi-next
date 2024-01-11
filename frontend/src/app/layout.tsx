@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: "Just start doing your stuff!",
 };
 
+export const revalidate = 60;
+
 export type RootLayoutProps = {
   children: React.ReactNode;
 };
