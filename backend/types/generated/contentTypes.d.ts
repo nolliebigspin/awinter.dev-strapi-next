@@ -374,7 +374,10 @@ export interface ApiPagePage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    slug: Attribute.UID & Attribute.Required;
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.DefaultTo<'/'>;
     headline: Attribute.String;
     blocks: Attribute.Blocks;
     createdAt: Attribute.DateTime;

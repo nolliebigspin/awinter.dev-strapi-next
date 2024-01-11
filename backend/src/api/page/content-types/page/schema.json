@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "slug": {
-      "type": "uid",
+      "type": "string",
+      "unique": true,
+      "default": "/",
       "required": true
     },
     "headline": {
