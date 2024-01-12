@@ -14,13 +14,17 @@ export type BlocksProps = {
 const Blocks = ({ content, className }: BlocksProps) => {
   return (
     content && (
-      <div className={className}>
+      <div className={`max-w-prose ${className}`}>
         <BlocksRenderer
           content={content}
           blocks={{
-            paragraph: ({ children }) => (
-              <p className="max-w-prose text-base">{children}</p>
-            ),
+            paragraph: ({ children }) =>
+              // @ts-expect-error: lack of lib ts
+              children[0].props.text !== "" ? (
+                <p className="text-base">{children}</p>
+              ) : (
+                <br />
+              ),
             heading: ({ children, level }) => {
               switch (level) {
                 case 1:
