@@ -29,8 +29,9 @@ const getData = async (slug: Slug) => {
 };
 
 const Slug = async ({ params }: { params: { slug: Slug } }) => {
+  const slug = params.slug || "";
   const navData = await getNavigation();
-  const data = await getData(params.slug);
+  const data = await getData(slug);
 
   return (
     <>
