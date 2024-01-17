@@ -1,0 +1,17 @@
+query navigation {
+  routes {
+    data {
+      attributes {
+        label
+        placement
+        page {
+          data {
+            attributes {
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "routes",
+  "info": {
+    "singularName": "route",
+    "pluralName": "routes",
+    "displayName": "Route",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page",
+      "inversedBy": "route"
+    },
+    "placement": {
+      "type": "enumeration",
+      "enum": [
+        "MAIN_NAVIGAITON",
+        "FOOTER_NAVIGATION"
+      ],
+      "required": true
+    }
+  }
+}

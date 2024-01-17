@@ -1,19 +1,20 @@
 "use client";
 
-import { LinkItem } from "@/types";
+import { RouteEntity } from "@/lib/genTypes";
 import Link from "next/link";
 import React, { useState } from "react";
+import { FaGithub } from "react-icons/fa6";
 
+import IconButton from "./IconButton";
 import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 
-const Navigation = () => {
+export type NavigationProps = {
+  routes?: RouteEntity[];
+};
+
+const Navigation = ({ routes }: NavigationProps) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navigationItems: LinkItem[] = [
-    // TODO
-    // { label: "about", href: "/about" },
-    // { label: "blog", href: "/blog" },
-  ];
 
   const hamburgerBar =
     "h-1 w-8 my-1 rounded-full bg-dark dark:bg-light transform duration-200";
@@ -30,23 +31,39 @@ const Navigation = () => {
         <Link href="/" onClick={() => setMobileMenuOpen(false)}>
           <Logo size={40} animation />
         </Link>
-        <div className="hidden gap-6 md:flex">
-          {navigationItems.length > 0 && (
+        <div className="hidden gap-4 md:flex">
+          {routes && routes.length > 0 && (
             <ul className="flex gap-6 text-xl">
-              {navigationItems.map((item) => (
-                <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
-                  <Link href={item.href} className="font-bold hover:underline">
-                    {item.label}
+              {routes.map((route) => (
+                <li
+                  key={route.attributes?.label}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Link
+                    href={route.attributes?.page?.data?.attributes?.slug || "/"}
+                    className="font-bold hover:underline"
+                  >
+                    {route.attributes?.label}
                   </Link>
                 </li>
               ))}
             </ul>
           )}
+          <IconButton
+            icon={<FaGithub size={26} />}
+            href="https://github.com/nolliebigspin"
+            target="_blank"
+          />
           <ThemeSwitch />
         </div>
         <div className="flex gap-4 md:hidden">
+          <IconButton
+            icon={<FaGithub size={26} />}
+            href="https://github.com/nolliebigspin"
+            target="_blank"
+          />
           <ThemeSwitch />
-          {navigationItems.length > 0 && (
+          {routes && routes.length > 0 && (
             <button
               className="group flex h-12 w-12 flex-col items-center justify-center"
               onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
@@ -84,12 +101,18 @@ const Navigation = () => {
         }`}
       >
         <div className="overflow-hidden">
-          {navigationItems.length > 0 && (
+          {routes && routes.length > 0 && (
             <ul className="space-y-2 p-4 text-xl">
-              {navigationItems.map((item) => (
-                <li key={item.label} onClick={() => setMobileMenuOpen(false)}>
-                  <Link href={item.href} className="font-bold hover:underline">
-                    {item.label}
+              {routes.map((route) => (
+                <li
+                  key={route.attributes?.label}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Link
+                    href={route.attributes?.page?.data?.attributes?.slug || "/"}
+                    className="font-bold hover:underline"
+                  >
+                    {route.attributes?.label}
                   </Link>
                 </li>
               ))}

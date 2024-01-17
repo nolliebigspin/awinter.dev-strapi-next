@@ -212,6 +212,11 @@ export enum Enum_Contentreleasesreleaseaction_Type {
   Unpublish = "unpublish",
 }
 
+export enum Enum_Route_Placement {
+  FooterNavigation = "FOOTER_NAVIGATION",
+  MainNavigaiton = "MAIN_NAVIGAITON",
+}
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars["String"]["input"]>;
   caption?: InputMaybe<Scalars["String"]["input"]>;
@@ -250,6 +255,7 @@ export type GenericMorph =
   | ContentReleasesReleaseAction
   | I18NLocale
   | Page
+  | Route
   | UploadFile
   | UploadFolder
   | UsersPermissionsPermission
@@ -374,6 +380,7 @@ export type Mutation = {
   createContentReleasesRelease?: Maybe<ContentReleasesReleaseEntityResponse>;
   createContentReleasesReleaseAction?: Maybe<ContentReleasesReleaseActionEntityResponse>;
   createPage?: Maybe<PageEntityResponse>;
+  createRoute?: Maybe<RouteEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
@@ -383,6 +390,7 @@ export type Mutation = {
   deleteContentReleasesRelease?: Maybe<ContentReleasesReleaseEntityResponse>;
   deleteContentReleasesReleaseAction?: Maybe<ContentReleasesReleaseActionEntityResponse>;
   deletePage?: Maybe<PageEntityResponse>;
+  deleteRoute?: Maybe<RouteEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -404,6 +412,7 @@ export type Mutation = {
   updateContentReleasesReleaseAction?: Maybe<ContentReleasesReleaseActionEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updatePage?: Maybe<PageEntityResponse>;
+  updateRoute?: Maybe<RouteEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -431,6 +440,10 @@ export type MutationCreatePageArgs = {
   data: PageInput;
 };
 
+export type MutationCreateRouteArgs = {
+  data: RouteInput;
+};
+
 export type MutationCreateUploadFileArgs = {
   data: UploadFileInput;
 };
@@ -456,6 +469,10 @@ export type MutationDeleteContentReleasesReleaseActionArgs = {
 };
 
 export type MutationDeletePageArgs = {
+  id: Scalars["ID"]["input"];
+};
+
+export type MutationDeleteRouteArgs = {
   id: Scalars["ID"]["input"];
 };
 
@@ -528,6 +545,11 @@ export type MutationUpdatePageArgs = {
   id: Scalars["ID"]["input"];
 };
 
+export type MutationUpdateRouteArgs = {
+  data: RouteInput;
+  id: Scalars["ID"]["input"];
+};
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars["ID"]["input"];
@@ -562,6 +584,7 @@ export type Page = {
   createdAt?: Maybe<Scalars["DateTime"]["output"]>;
   headline?: Maybe<Scalars["String"]["output"]>;
   publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  route?: Maybe<RouteEntityResponse>;
   slug: Scalars["String"]["output"];
   updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
 };
@@ -592,6 +615,7 @@ export type PageFiltersInput = {
   not?: InputMaybe<PageFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  route?: InputMaybe<RouteFiltersInput>;
   slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -600,6 +624,7 @@ export type PageInput = {
   blocks?: InputMaybe<Scalars["JSON"]["input"]>;
   headline?: InputMaybe<Scalars["String"]["input"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  route?: InputMaybe<Scalars["ID"]["input"]>;
   slug?: InputMaybe<Scalars["String"]["input"]>;
 };
 
@@ -634,6 +659,8 @@ export type Query = {
   me?: Maybe<UsersPermissionsMe>;
   page?: Maybe<PageEntityResponse>;
   pages?: Maybe<PageEntityResponseCollection>;
+  route?: Maybe<RouteEntityResponse>;
+  routes?: Maybe<RouteEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -685,6 +712,17 @@ export type QueryPagesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 };
 
+export type QueryRouteArgs = {
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+};
+
+export type QueryRoutesArgs = {
+  filters?: InputMaybe<RouteFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
 export type QueryUploadFileArgs = {
   id?: InputMaybe<Scalars["ID"]["input"]>;
 };
@@ -728,6 +766,53 @@ export type QueryUsersPermissionsUsersArgs = {
 export type ResponseCollectionMeta = {
   __typename?: "ResponseCollectionMeta";
   pagination: Pagination;
+};
+
+export type Route = {
+  __typename?: "Route";
+  createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  label: Scalars["String"]["output"];
+  page?: Maybe<PageEntityResponse>;
+  placement: Enum_Route_Placement;
+  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
+};
+
+export type RouteEntity = {
+  __typename?: "RouteEntity";
+  attributes?: Maybe<Route>;
+  id?: Maybe<Scalars["ID"]["output"]>;
+};
+
+export type RouteEntityResponse = {
+  __typename?: "RouteEntityResponse";
+  data?: Maybe<RouteEntity>;
+};
+
+export type RouteEntityResponseCollection = {
+  __typename?: "RouteEntityResponseCollection";
+  data: Array<RouteEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type RouteFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<RouteFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  label?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<RouteFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<RouteFiltersInput>>>;
+  page?: InputMaybe<PageFiltersInput>;
+  placement?: InputMaybe<StringFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type RouteInput = {
+  label?: InputMaybe<Scalars["String"]["input"]>;
+  page?: InputMaybe<Scalars["ID"]["input"]>;
+  placement?: InputMaybe<Enum_Route_Placement>;
+  publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
 };
 
 export type StringFilterInput = {
@@ -1124,6 +1209,30 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type NavigationQueryVariables = Exact<{ [key: string]: never }>;
+
+export type NavigationQuery = {
+  __typename?: "Query";
+  routes?: {
+    __typename?: "RouteEntityResponseCollection";
+    data: Array<{
+      __typename?: "RouteEntity";
+      attributes?: {
+        __typename?: "Route";
+        label: string;
+        placement: Enum_Route_Placement;
+        page?: {
+          __typename?: "PageEntityResponse";
+          data?: {
+            __typename?: "PageEntity";
+            attributes?: { __typename?: "Page"; slug: string };
+          };
+        };
+      };
+    }>;
+  };
+};
+
 export type PageBySlugQueryVariables = Exact<{
   slug: Scalars["String"]["input"];
 }>;
@@ -1144,6 +1253,88 @@ export type PageBySlugQuery = {
   };
 };
 
+export const NavigationDocument = gql`
+  query navigation {
+    routes {
+      data {
+        attributes {
+          label
+          placement
+          page {
+            data {
+              attributes {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useNavigationQuery__
+ *
+ * To run a query within a React component, call `useNavigationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNavigationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNavigationQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useNavigationQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    NavigationQuery,
+    NavigationQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<NavigationQuery, NavigationQueryVariables>(
+    NavigationDocument,
+    options
+  );
+}
+export function useNavigationLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    NavigationQuery,
+    NavigationQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<NavigationQuery, NavigationQueryVariables>(
+    NavigationDocument,
+    options
+  );
+}
+export function useNavigationSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    NavigationQuery,
+    NavigationQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<NavigationQuery, NavigationQueryVariables>(
+    NavigationDocument,
+    options
+  );
+}
+export type NavigationQueryHookResult = ReturnType<typeof useNavigationQuery>;
+export type NavigationLazyQueryHookResult = ReturnType<
+  typeof useNavigationLazyQuery
+>;
+export type NavigationSuspenseQueryHookResult = ReturnType<
+  typeof useNavigationSuspenseQuery
+>;
+export type NavigationQueryResult = Apollo.QueryResult<
+  NavigationQuery,
+  NavigationQueryVariables
+>;
 export const PageBySlugDocument = gql`
   query pageBySlug($slug: String!) {
     pages(filters: { slug: { eq: $slug } }) {
