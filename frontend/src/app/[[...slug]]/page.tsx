@@ -17,6 +17,7 @@ const getNavigation = async () => {
 
 const getData = async (slug: Slug) => {
   const slugPath = !slug ? "" : typeof slug === "string" ? slug : slug.join("/")
+  console.log("YEA: ", `/${slugPath}`)
   const { data, error } = await client.query<PageBySlugQuery>({
     query: PageBySlugDocument,
     variables: {
@@ -29,7 +30,10 @@ const getData = async (slug: Slug) => {
 };
 
 const Slug = async ({ params }: { params: { slug: Slug } }) => {
+  console.log("PARAMS: ", params.slug)
   const slug = params.slug || "index";
+  console.log("SLUG: ", slug)
+
   const navData = await getNavigation();
   const data = await getData(slug);
 
