@@ -1,9 +1,10 @@
 "use client";
 
+import { externalLinks } from "@/constants";
 import { RouteEntity } from "@/lib/genTypes";
 import Link from "next/link";
 import React, { useState } from "react";
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 
 import IconButton from "./IconButton";
 import Logo from "./Logo";
@@ -12,6 +13,26 @@ import ThemeSwitch from "./ThemeSwitch";
 export type NavigationProps = {
   routes?: RouteEntity[];
 };
+
+const SocialIconLinks = () => (
+  <>
+    <IconButton
+      icon={<FaGithub size={26} />}
+      href={externalLinks.github}
+      target="_blank"
+    />
+    <IconButton
+      icon={<FaInstagram size={26} />}
+      href={externalLinks.instagram}
+      target="_blank"
+    />
+    <IconButton
+      icon={<FaLinkedin size={26} />}
+      href={externalLinks.linkedIn}
+      target="_blank"
+    />
+  </>
+);
 
 const Navigation = ({ routes }: NavigationProps) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -49,19 +70,11 @@ const Navigation = ({ routes }: NavigationProps) => {
               ))}
             </ul>
           )}
-          <IconButton
-            icon={<FaGithub size={26} />}
-            href="https://github.com/nolliebigspin"
-            target="_blank"
-          />
+          <SocialIconLinks />
           <ThemeSwitch />
         </div>
         <div className="flex gap-4 md:hidden">
-          <IconButton
-            icon={<FaGithub size={26} />}
-            href="https://github.com/nolliebigspin"
-            target="_blank"
-          />
+          <SocialIconLinks />
           <ThemeSwitch />
           {routes && routes.length > 0 && (
             <button
