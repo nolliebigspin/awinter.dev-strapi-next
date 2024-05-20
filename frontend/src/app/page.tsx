@@ -6,6 +6,7 @@ import {
   Enum_Route_Placement,
   PageBySlugDocument,
   PageBySlugQuery,
+  PageEntity,
 } from "@/lib/genTypes";
 import { getNavigation } from "@/lib/helpers";
 import type { Slug } from "@/types";
@@ -34,7 +35,7 @@ const Slug = async () => {
             route.attributes?.placement === Enum_Route_Placement.MainNavigaiton
         )}
       />
-      <PageContent data={pageData} />
+      <PageContent data={pageData as PageEntity} />
       <Footer
         routes={navData?.filter(
           (route) =>

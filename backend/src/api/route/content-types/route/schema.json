@@ -27,9 +27,13 @@
       "type": "enumeration",
       "enum": [
         "MAIN_NAVIGAITON",
-        "FOOTER_NAVIGATION"
+        "FOOTER_NAVIGATION",
+        "HIDDEN"
       ],
       "required": true
+    },
+    "anchor": {
+      "type": "string"
     }
   }
 }

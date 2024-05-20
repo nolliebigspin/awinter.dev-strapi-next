@@ -61,7 +61,13 @@ const Navigation = ({ routes }: NavigationProps) => {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Link
-                    href={route.attributes?.page?.data?.attributes?.slug || "/"}
+                    href={`${
+                      route.attributes?.page?.data?.attributes?.slug || "/"
+                    }${
+                      route.attributes?.anchor
+                        ? `#${route.attributes.anchor}`
+                        : ""
+                    }`}
                     className="font-bold hover:underline"
                   >
                     {route.attributes?.label}
@@ -122,7 +128,13 @@ const Navigation = ({ routes }: NavigationProps) => {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Link
-                    href={route.attributes?.page?.data?.attributes?.slug || "/"}
+                    href={`${
+                      route.attributes?.page?.data?.attributes?.slug || "/"
+                    }${
+                      route.attributes?.anchor
+                        ? `#${route.attributes.anchor}`
+                        : ""
+                    }`}
                     className="font-bold hover:underline"
                   >
                     {route.attributes?.label}

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_segments_blocks",
+  "info": {
+    "displayName": "Block",
+    "icon": "archive",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "block": {
+      "type": "blocks"
+    }
+  }
+}

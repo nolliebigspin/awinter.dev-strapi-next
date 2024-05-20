@@ -805,8 +805,8 @@ export interface ApiPagePage extends Schema.CollectionType {
       Attribute.Unique &
       Attribute.DefaultTo<'/'>;
     headline: Attribute.String;
-    blocks: Attribute.Blocks;
     route: Attribute.Relation<'api::page.page', 'oneToOne', 'api::route.route'>;
+    segments: Attribute.DynamicZone<['segments.blocks', 'segments.anchor']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -831,8 +831,11 @@ export interface ApiRouteRoute extends Schema.CollectionType {
   attributes: {
     label: Attribute.String & Attribute.Required & Attribute.Unique;
     page: Attribute.Relation<'api::route.route', 'oneToOne', 'api::page.page'>;
-    placement: Attribute.Enumeration<['MAIN_NAVIGAITON', 'FOOTER_NAVIGATION']> &
+    placement: Attribute.Enumeration<
+      ['MAIN_NAVIGAITON', 'FOOTER_NAVIGATION', 'HIDDEN']
+    > &
       Attribute.Required;
+    anchor: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

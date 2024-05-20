@@ -22,14 +22,18 @@
       "type": "string",
       "required": false
     },
-    "blocks": {
-      "type": "blocks"
-    },
     "route": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::route.route",
       "mappedBy": "page"
+    },
+    "segments": {
+      "type": "dynamiczone",
+      "components": [
+        "segments.blocks",
+        "segments.anchor"
+      ]
     }
   }
 }

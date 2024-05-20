@@ -12,7 +12,11 @@ const Footer = ({ routes }: FooterProps) => {
           routes.map((route) => (
             <li key={route.attributes?.label}>
               <Link
-                href={route.attributes?.page?.data?.attributes?.slug || "/"}
+                href={`${
+                  route.attributes?.page?.data?.attributes?.slug || "/"
+                }${
+                  route.attributes?.anchor ? `#${route.attributes.anchor}` : ""
+                }`}
                 className="hover:underline"
               >
                 {route.attributes?.label}

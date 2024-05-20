@@ -4,7 +4,15 @@ query pageBySlug($slug: String!) {
       attributes {
         slug
         headline
-        blocks
+        segments {
+          __typename
+          ... on ComponentSegmentsBlocks {
+            block
+          }
+          ... on ComponentSegmentsAnchor {
+            anchor
+          }
+        }
       }
     }
   }

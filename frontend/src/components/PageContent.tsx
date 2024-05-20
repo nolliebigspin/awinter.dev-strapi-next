@@ -1,7 +1,7 @@
 import { PageEntity } from "@/lib/genTypes";
 
-import Blocks from "./Blocks";
 import Header from "./Header";
+import Segments from "./Segments";
 
 export type PageContentProps = {
   data?: PageEntity;
@@ -15,7 +15,9 @@ const PageContent = ({ data }: PageContentProps) => {
           {data.attributes?.headline && (
             <Header title={data.attributes?.headline} />
           )}
-          <Blocks content={data.attributes?.blocks} />
+          {data.attributes?.segments && (
+            <Segments segments={data.attributes.segments} />
+          )}
         </div>
       ) : (
         <Header title={"No content found!"} />

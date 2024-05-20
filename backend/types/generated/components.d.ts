@@ -15,19 +15,26 @@ export interface AtomsButton extends Schema.Component {
   };
 }
 
-export interface SegmentsCta extends Schema.Component {
-  collectionName: 'components_segments_ctas';
+export interface SegmentsAnchor extends Schema.Component {
+  collectionName: 'components_segments_anchors';
   info: {
-    displayName: 'CTA';
-    icon: 'lightbulb';
+    displayName: 'Anchor';
+    icon: 'apps';
+  };
+  attributes: {
+    anchor: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface SegmentsBlocks extends Schema.Component {
+  collectionName: 'components_segments_blocks';
+  info: {
+    displayName: 'Block';
+    icon: 'archive';
     description: '';
   };
   attributes: {
-    image: Attribute.Media & Attribute.Required;
-    headline: Attribute.String & Attribute.Required;
-    text: Attribute.RichText;
-    claim: Attribute.String;
-    button: Attribute.Component<'atoms.button'>;
+    block: Attribute.Blocks;
   };
 }
 
@@ -35,7 +42,8 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'atoms.button': AtomsButton;
-      'segments.cta': SegmentsCta;
+      'segments.anchor': SegmentsAnchor;
+      'segments.blocks': SegmentsBlocks;
     }
   }
 }

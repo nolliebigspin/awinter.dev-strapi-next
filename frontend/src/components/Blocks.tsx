@@ -43,8 +43,6 @@ const Blocks = ({ content, className }: BlocksProps) => {
                   return <h5 className="mb-2 text-xl font-bold">{children}</h5>;
                 case 6:
                   return <h6 className="text-xl">{children}</h6>;
-                default:
-                  return <h3 className="text-4xl font-bold">{children}</h3>;
               }
             },
             link: ({ children, url }) => (

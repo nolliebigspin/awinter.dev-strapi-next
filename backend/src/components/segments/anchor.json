@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_segments_anchors",
+  "info": {
+    "displayName": "Anchor",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "anchor": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
